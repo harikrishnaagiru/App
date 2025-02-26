@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>\${spring.boot.version}</version>
+            <version>${spring.boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
-            <version>\${spring.boot.version}</version>
+            <version>${spring.boot.version}</version>
         </dependency>
 
         <!-- MySQL Driver -->
@@ -48,14 +48,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>\${spring.boot.version}</version>
+            <version>${spring.boot.version}</version>
         </dependency>
 
         <!-- Thymeleaf for HTML -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>\${spring.boot.version}</version>
+            <version>${spring.boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -65,7 +65,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>\${spring.boot.version}</version>
+                <version>${spring.boot.version}</version>
             </plugin>
 
             <!-- Maven Compiler Plugin -->
@@ -75,8 +75,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <!-- Set Java version for compiling -->
-                    <source>\${java.version}</source>
-                    <target>\${java.version}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
