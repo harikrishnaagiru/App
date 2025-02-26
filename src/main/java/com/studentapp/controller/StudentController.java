@@ -1,7 +1,7 @@
 package com.studentapp.controller;
 
 import com.studentapp.model.Student;
-import com.studentapp.repository.StudentRepository;
+import com.studentapp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,21 +13,18 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
     @GetMapping("/")
     public String home(Model model) {
-        List<Student> students = studentRepository.findAll();
+        List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
         return "index";
     }
 
     @PostMapping("/addStudent")
     public String addStudent(@RequestParam String name) {
-        Student student = new Student();
-        student.setName(name);
-        student.setAttendance(false);
-        studentRepository.save(student);
+        studentService.addStudent(name);
         return "redirect:/";
     }
 }
