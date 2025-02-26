@@ -6,13 +6,21 @@
     <groupId>com.studentapp</groupId>
     <artifactId>StudentAttendanceApp</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>  <!-- JAR Packaging -->
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- Define Spring Boot version for dependencies -->
+        <spring.boot.version>3.1.2</spring.boot.version>
+        <!-- Define Java version -->
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <!-- Spring Boot Starter Web (Without Tomcat) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>\${spring.boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -25,12 +33,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
+            <version>\${spring.boot.version}</version>
         </dependency>
 
         <!-- MySQL Driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -38,20 +48,36 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>\${spring.boot.version}</version>
         </dependency>
 
         <!-- Thymeleaf for HTML -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>\${spring.boot.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>\${spring.boot.version}</version>
+            </plugin>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <!-- Set Java version for compiling -->
+                    <source>\${java.version}</source>
+                    <target>\${java.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
