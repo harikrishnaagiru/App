@@ -21,16 +21,14 @@
             <th>Attendance</th>
             <th>Action</th>
         </tr>
-        <tbody id="studentTableBody">
-            <tr th:each="student : ${students}">
-                <td th:text="${student.id}"></td>
-                <td th:text="${student.name}"></td>
-                <td th:text="${student.attendance} ? 'Present' : 'Absent'"></td>
-                <td>
-                    <button onclick="toggleAttendance(this, [[${student.id}]])">Toggle</button>
-                </td>
-            </tr>
-        </tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td id="attendance-status-[[${student.id}]]" th:text="${student.attendance} ? 'Present' : 'Absent'"></td>
+            <td>
+                <button onclick="toggleAttendance([[${student.id}]])">Toggle Attendance</button>
+            </td>
+        </tr>
     </table>
 
     <script src="/js/scripts.js"></script>

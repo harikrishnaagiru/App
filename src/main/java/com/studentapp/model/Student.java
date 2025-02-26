@@ -5,13 +5,16 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "students")
 public class Student {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
-    private boolean attendance;
+    @Column(nullable = false)
+    private boolean attendance = false;
 
     // Default constructor (Required by JPA)
     public Student() {}
@@ -40,8 +43,8 @@ public class Student {
         this.name = name;
     }
 
-    // Corrected Getter and Setter for Attendance
-    public boolean getAttendance() {
+    // Getter and Setter for Attendance
+    public boolean isAttendance() {  // Correct naming convention for booleans
         return attendance;
     }
 

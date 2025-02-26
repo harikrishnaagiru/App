@@ -15,7 +15,6 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    // Display home page with student list
     @GetMapping("/")
     public String home(Model model) {
         List<Student> students = studentService.getAllStudents();
@@ -23,24 +22,16 @@ public class StudentController {
         return "index";
     }
 
-    // Add new student
     @PostMapping("/addStudent")
     public String addStudent(@RequestParam String name) {
         studentService.addStudent(name);
         return "redirect:/";
     }
 
-    // Update attendance
-    @PostMapping("/updateAttendance")
-    public String updateAttendance(@RequestParam Long id, @RequestParam boolean attendance) {
-        studentService.updateAttendance(id, attendance);
-        return "redirect:/";
-    }
-
-    // Delete student
-    @PostMapping("/deleteStudent")
-    public String deleteStudent(@RequestParam Long id) {
-        studentService.deleteStudent(id);
-        return "redirect:/";
+    @PostMapping("/updateAttendance/{id}")
+    @ResponseBody
+    public String updateAttendance(@PathVariable Long id) {
+        studentService.toggleAttendance(id);
+        return "Attendance updated";
     }
 }

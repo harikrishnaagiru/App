@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    // Fetch students by name
+    // Fetch students by exact name match (case-sensitive)
     List<Student> findByName(String name);
 
     // Fetch students by attendance status
@@ -20,5 +20,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE Student s SET s.attendance = :status WHERE s.id = :id")
-    void updateAttendance(Long id, boolean status);
+    int updateAttendance(Long id, boolean status); // Return int for affected rows
 }
