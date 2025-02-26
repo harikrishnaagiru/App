@@ -1,24 +1,11 @@
-<build>
-    <plugins>
-        <!-- Spring Boot Maven Plugin -->
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>\${spring.boot.version}</version>
-            <configuration>
-                <mainClass>com.studentapp.StudentAttendanceApp</mainClass> <!-- Specify your main class here -->
-            </configuration>
-        </plugin>
+package com.studentapp;
 
-        <!-- Maven Compiler Plugin -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.8.1</version>
-            <configuration>
-                <source>\${java.version}</source>
-                <target>\${java.version}</target>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class StudentAttendanceApp {
+    public static void main(String[] args) {
+        SpringApplication.run(StudentAttendanceApp.class, args);
+    }
+}
