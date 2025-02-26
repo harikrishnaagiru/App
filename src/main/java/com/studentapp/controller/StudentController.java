@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/students")
 public class StudentController {
 
     @Autowired
     private StudentService studentService;
 
+    // Display home page with student list
     @GetMapping("/")
     public String home(Model model) {
         List<Student> students = studentService.getAllStudents();
@@ -23,20 +23,24 @@ public class StudentController {
         return "index";
     }
 
-    @PostMapping("/add")
-    public String addStudent(@RequestParam String name, Model model) {
-        if (name == null || name.trim().isEmpty()) {
-            model.addAttribute("error", "Student name cannot be empty");
-            return "addStudent"; // Return to the form page with an error message
-        }
+    // Add new student
+    @PostMapping("/addStudent")
+    public String addStudent(@RequestParam String name) {
         studentService.addStudent(name);
-        return "redirect:/students/";
+        return "redirect:/";
     }
 
-    @GetMapping("/attendance")
-    public String viewAttendance(Model model) {
-        List<Student> students = studentService.getAllStudents();
-        model.addAttribute("students", students);
-        return "viewAttendance";
+    // Update attendance
+    @PostMapping("/updateAttendance")
+    public String updateAttendance(@RequestParam Long id, @RequestParam boolean attendance) {
+        studentService.updateAttendance(id, attendance);
+        return "redirect:/";
+    }
+
+    // Delete student
+    @PostMapping("/deleteStudent")
+    public String deleteStudent(@RequestParam Long id) {
+        studentService.deleteStudent(id);
+        return "redirect:/";
     }
 }
