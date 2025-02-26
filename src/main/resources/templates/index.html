@@ -8,8 +8,8 @@
 <body>
     <h1>Student Attendance Management</h1>
 
-    <form action="/addStudent" method="POST">
-        <input type="text" name="name" placeholder="Enter Student Name" required>
+    <form id="studentForm">
+        <input type="text" id="studentName" placeholder="Enter Student Name" required>
         <button type="submit">Add Student</button>
     </form>
 
@@ -19,12 +19,18 @@
             <th>ID</th>
             <th>Name</th>
             <th>Attendance</th>
+            <th>Action</th>
         </tr>
-        <tr th:each="student : ${students}">
-            <td th:text="${student.id}"></td>
-            <td th:text="${student.name}"></td>
-            <td th:text="${student.attendance} ? 'Present' : 'Absent'"></td>
-        </tr>
+        <tbody id="studentTableBody">
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.attendance} ? 'Present' : 'Absent'"></td>
+                <td>
+                    <button onclick="toggleAttendance(this, [[${student.id}]])">Toggle</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
     <script src="/js/scripts.js"></script>
