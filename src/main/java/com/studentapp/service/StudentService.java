@@ -30,7 +30,7 @@ public class StudentService {
         if (studentOpt.isPresent()) {
             Student student = studentOpt.get();
             student.setAttendance(!student.isAttendance());
-            studentRepository.save(student);
+            return studentRepository.save(student);
         }
     }
 }
