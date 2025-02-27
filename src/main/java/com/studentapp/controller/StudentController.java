@@ -29,7 +29,6 @@ public class StudentController {
     }
 
     @PutMapping("/updateAttendance/{id}")
-    @ResponseBody
     public String updateAttendance(@PathVariable Long id) {
         studentService.toggleAttendance(id);
         return "Attendance updated";
