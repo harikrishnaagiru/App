@@ -28,7 +28,7 @@ public class StudentController {
         return "redirect:/";
     }
 
-    @PostMapping("/updateAttendance/{id}")
+    @PutMapping("/updateAttendance/{id}")
     @ResponseBody
     public String updateAttendance(@PathVariable Long id) {
         studentService.toggleAttendance(id);
