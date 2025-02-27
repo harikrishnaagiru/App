@@ -30,7 +30,6 @@ public class StudentController {
 
     @PutMapping("/updateAttendance/{id}")
     public String updateAttendance(@PathVariable Long id) {
-        studentService.toggleAttendance(id);
-        return "Attendance updated";
+        return studentService.toggleAttendance(id);
     }
 }
