@@ -29,7 +29,7 @@
             </exclusions>
         </dependency>
 
-        <!-- Jetty as Embedded Server -->
+        <!-- Jetty as Embedded Server (Updated for Jakarta Servlet API compatibility) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
@@ -57,6 +57,14 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+
+        <!-- Jakarta Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version> <!-- Ensure compatibility with Spring Boot 3.x -->
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,4 +90,3 @@
         </plugins>
     </build>
 </project>
-
