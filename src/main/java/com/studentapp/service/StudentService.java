@@ -25,7 +25,7 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public void toggleAttendance(Long id) {
+    public Student toggleAttendance(Long id) {
         Optional<Student> studentOpt = studentRepository.findById(id);
         if (studentOpt.isPresent()) {
             Student student = studentOpt.get();
