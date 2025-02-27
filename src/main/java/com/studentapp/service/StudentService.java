@@ -21,7 +21,7 @@ public class StudentService {
     public void addStudent(String name) {
         Student student = new Student();
         student.setName(name);
-        student.setAttendance(false);
+        student.setAttendance(true);
         studentRepository.save(student);
     }
 
