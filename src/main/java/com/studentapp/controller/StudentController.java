@@ -29,7 +29,7 @@ public class StudentController {
     }
 
     @PutMapping("/updateAttendance/{id}")
-    public String updateAttendance(@PathVariable Long id) {
+    public Student updateAttendance(@PathVariable Long id) {
         return studentService.toggleAttendance(id);
     }
 }
