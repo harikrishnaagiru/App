@@ -3,6 +3,7 @@ package com.studentapp.controller;
 import com.studentapp.model.Student;
 import com.studentapp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,14 @@ public class StudentController {
     }
 
     @PostMapping("/addStudent")
-    public String addStudent(@RequestParam String name) {
-        studentService.addStudent(name);
-        return "redirect:/";
+    public ResponseEntity<String> addStudent(@RequestBody Student student) {
+        studentService.addStudent(student.getName());
+        return ResponseEntity.ok("Student added successfully");
     }
 
     @PutMapping("/updateAttendance/{id}")
-    public Student updateAttendance(@PathVariable Long id) {
-        return studentService.toggleAttendance(id);
+    public ResponseEntity<Student> updateAttendance(@PathVariable Long id) {
+        Student updatedStudent = studentService.toggleAttendance(id);
+        return updatedStudent != null ? ResponseEntity.ok(updatedStudent) : ResponseEntity.notFound().build();
     }
 }
